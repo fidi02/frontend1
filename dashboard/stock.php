@@ -24,6 +24,58 @@ $userDetails = UserData($_SESSION['sname']);
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
             async>
               {
+                "symbol": "NASDAQ:NFLX",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NASDAQ:PYPL",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:BABA",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+       <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
                 "symbol": "NASDAQ:TSLA",
                   "width": "100%",
                     "locale": "en",

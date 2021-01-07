@@ -8,9 +8,10 @@
       exit();
   }
 
-if (isset($_POST['user'],$_POST['name'],$_POST['email'],$_POST['pass'],$_POST['pass1'])) {
+if (isset($_POST['user'],$_POST['name'],$_POST['lname'],$_POST['email'],$_POST['pass'],$_POST['pass1'])) {
     $uname = mysqli_real_escape_string($conn, strip_tags($_POST['user']));
     $fname = mysqli_real_escape_string($conn, strip_tags($_POST['name']));
+    $lname = mysqli_real_escape_string($conn, strip_tags($_POST['lname']));
     $email = mysqli_real_escape_string($conn, strip_tags($_POST['email']));
     $pass1 = mysqli_real_escape_string($conn, strip_tags($_POST['pass']));
     $pass2 = mysqli_real_escape_string($conn, strip_tags($_POST['pass1']));
@@ -45,9 +46,9 @@ if (isset($_POST['user'],$_POST['name'],$_POST['email'],$_POST['pass'],$_POST['p
         } else {
             $password = dec_enc('encrypt', $pass1);
         
-            $insert = mysqli_query($conn, "INSERT INTO users (emri,email,username,password,statusi)
+            $insert = mysqli_query($conn, "INSERT INTO users (emri,mbiemri,email,username,password,statusi)
             VALUES
-            ('$fname','$email','$uname','$password',1)") or die(mysqli_error($conn));
+            ('$fname','$lname','$email','$uname','$password',1)") or die(mysqli_error($conn));
         
             header('location:signin.php?success=register');
             exit;

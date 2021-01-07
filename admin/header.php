@@ -89,7 +89,7 @@
                 <!--submenu-->
                 <ul class="sub-menu">
                     <li class="menu-item">
-                        <a href='alerts.html' class=' menu-link'>
+                        <a href='users.php' class=' menu-link'>
                                             <span class="menu-label">
                                                 <span class="menu-name">User List </span>
                                             </span>
@@ -102,7 +102,7 @@ A
 
                     </li>
                     <li class="menu-item">
-                        <a href='avatar.html' class=' menu-link'>
+                        <a href='users.php' class=' menu-link'>
                                             <span class="menu-label">
                                                 <span class="menu-name">Admin List </span>
                                             </span>
@@ -115,7 +115,7 @@ A
 
                     </li>
                     <li class="menu-item">
-                        <a href='buttons.html' class=' menu-link'>
+                        <a href='adduser.php' class=' menu-link'>
                                             <span class="menu-label">
                                                 <span class="menu-name">Add Admin </span>
                                             </span>
@@ -146,7 +146,7 @@ B
                 <ul class="sub-menu">
 
                     <li class="menu-item">
-                        <a href='widget-01.html' class=' menu-link'>
+                        <a href='transactions.php' class=' menu-link'>
                                         <span class="menu-label">
                                                 <span class="menu-name">Transcations List
                                                 </span>
@@ -157,7 +157,7 @@ B
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href='widget-02.html' class=' menu-link'>
+                        <a href='add.php' class=' menu-link'>
                                         <span class="menu-label">
                                                   <span class="menu-name">Add Transcation
                                                 </span>

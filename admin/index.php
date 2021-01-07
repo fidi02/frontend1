@@ -47,37 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col m-b-30">
-                    <div class="card ">
 
-                        <div class="card-body">
-                            <div class="card-controls">
-                                <a href="#" class="badge badge-soft-danger"> <i class="mdi mdi-arrow-down"></i> 35 %</a>
-                            </div>
-                            <div class="text-center p-t-30 p-b-20">
-                                <div class="text-overline text-muted opacity-75">last month price</div>
-                                <h1 class="text-danger">$ 1850</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col m-b-30">
-                    <div class="card ">
-
-                        <div class="card-body">
-                            <div class="card-controls">
-                                <a href="#" class="badge badge-soft-success"> <i class="mdi mdi-arrow-up"></i> 32 %</a>
-                            </div>
-                            <div class="text-center p-t-30 p-b-20">
-                                <div class="text-overline text-muted opacity-75">
-                                    Etherium
-                                </div>
-                                <h1 class="text-success">$ 4,540</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col m-b-30">
                     <div class="card ">
@@ -95,23 +65,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col m-b-30">
-                    <div class="card ">
-
-                        <div class="card-body">
-                            <div class="card-controls">
-                                <a href="#" class="badge badge-soft-success"> <i class="mdi mdi-arrow-up"></i> 65 %</a>
-                            </div>
-                            <div class="text-center p-t-30 p-b-20">
-                                <div class="text-overline text-muted opacity-75">
-                                    ripple
-                                </div>
-                                <h1 class="text-success">$ 14,540</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col visible-xlg   m-b-30">
                     <div class="card ">
 

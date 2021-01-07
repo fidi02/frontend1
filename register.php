@@ -49,7 +49,11 @@
                                     <form class="uk-grid uk-form">
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-                                            <input class="uk-input uk-border-rounded" name="name" value="" type="text" placeholder="Full Name" required>
+                                            <input class="uk-input uk-border-rounded" name="name" value="" type="text" placeholder="First Name" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" name="lname" value="" type="text" placeholder="Last Name" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>

@@ -1,4 +1,20 @@
-<?php include '../config/db.php';?>
+<?php include '../config/db.php';
+$id = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM users where id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$fname = $row['emri'];
+$lname = $row['mbiemri'];
+$email = $row['email'];
+$phone = $row['phone'];
+$eur = $row['eur'];
+$btc = $row['btc'];
+$eth = $row['eth'];
+if(isset($_POST['submit'])){
+    header('location:profile.php?error=uploadingimage');
+    exit;
+}
+
+?>
 <?php include 'header.php';?>
 <section class="admin-content">
         <div class="bg-dark">
@@ -7,7 +23,7 @@
                     <div class="col-12 text-white p-t-40 p-b-90">
 
                         <h4 class="">
-                               Users List
+                               Add Transaction
                         </h4>
                         
 
@@ -20,60 +36,57 @@
         <div class="container  pull-up">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
 
-                        <div class="card-body">
-                            <div class="table-responsive p-t-10">
-                                <table id="example-multi" class="table   " style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last  Name</th>
-                                        <th>Email</th>
-                                        <th>Amount</th>
-                                        <th>BTC</th>
-                                        <th>ETH</th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php 
-                                    $query = mysqli_query($conn,"SELECT * FROM users where statusi = 1");
-                                    while($row = mysqli_fetch_assoc($query)){
-                                        $id = $row['id'];
-                                        $fname = $row['emri'];
-                                        $lname = $row['mbiemri'];
-                                        $email = $row['email'];
-                                        $eur = $row['eur'];
-                                        $btc = $row['btc'];
-                                        $eth = $row['eth'];
-                                        echo '
-                                        <tr>
-                                        <td>'.$id.'</td>
-                                        <td>'.$fname.'</td>
-                                        <td>'.$lname.'</td>
-                                        <td>'.$email.'</td>
-                                        <td>'.$eur.'</td>
-                                        <td>'.$btc.'</td>
-                                        <td>'.$eth.'</td>
-                                        <td class="text-center">
-                                            <a href="edit.php?id='.$id.'" class="btn  btn-primary"> Edit</a>
-                                            <a href="create.php?id='.$id.'" class="btn  btn-danger"> Create Transaction</a>
-                                        </td>
-                                    </tr>
-                                        ';
-                                    }
-                                    
-                                    
-                                    ?>
-                                    
-                                    </tfoot>
-                                </table>
+                       <!--widget card begin-->
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <h5 class="m-b-0">
+                                 Add Transaction
+                            </h5>
+                            
+                        </div>
+                        <div class="card-body ">
+                            <form action="add.php" method="POST">
+                                <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">First Name</label>
+                                    <input type="text" class="form-control" name="fname" value="<?php echo $fname;?>">
+                                    <input type="hidden" class="form-control" name="id" value="<?php echo $id;?>">
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" value="<?php echo $lname;?>">
+                                </div>
+                                 <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" name="email" value="<?php echo $email;?>">
+                                </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">EUR</label>
+                                    <input type="text" class="form-control" name="eur" value="0">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">BTC</label>
+                                    <input type="text" class="form-control" name="btc" value="0">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">ETH</label>
+                                    <input type="text" class="form-control" name="eth" value="0">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
-                </div>
+                    <!--widget card ends-->
+                    </div>
             </div>
         </div>
     </section>
