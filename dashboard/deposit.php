@@ -255,7 +255,7 @@ f          </div>
                   <div class="col-md-12 col-lg-8">
                     <div class="tab-content">
                       <div class="tab-pane fade show active" id="coinBTC" role="tabpanel">
-                        <div class="card">
+                        <div class="card modal-content">
                           <div class="card-body">
                             <h5 class="card-title">Balances</h5>
                             <ul>
@@ -278,31 +278,39 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button type="button" class="btn green" data-toggle="modal" data-target="#depositBTC">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+
+                        <div class="modal fade" id="depositBTC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
                         </div>
+                        
                         <div class="card">
                           <div class="card-body">
                             <h5 class="card-title">Latest Transactions</h5>
@@ -377,31 +385,39 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositETH">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+
+                        <div class="modal fade" id="depositETH" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
                         </div>
+
                         <div class="card">
                           <div class="card-body">
                             <h5 class="card-title">Latest Transactions</h5>
@@ -476,31 +492,38 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositBNB">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+                        <div class="modal fade" id="depositBNB" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
                         </div>
+
                         <div class="card">
                           <div class="card-body">
                             <h5 class="card-title">Latest Transactions</h5>
@@ -575,27 +598,33 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositTRX">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+                        <div class="modal fade" id="depositTRX" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
@@ -674,27 +703,33 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositEOS">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+                        <div class="modal fade" id="depositEOS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
@@ -773,27 +808,33 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositXMR">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+                        <div class="modal fade" id="depositXMR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
@@ -872,27 +913,33 @@ f          </div>
                                 </div>
                               </li>
                             </ul>
-                            <button class="btn green">Deposit</button>
+                            <button class="btn green" data-toggle="modal" data-target="#depositKCS">Deposit</button>
                             <button class="btn red">Withdraw</button>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Wallet Deposit Address</h5>
-                            <div class="row wallet-address">
-                              <div class="col-md-8">
-                                <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
-                                  of your
-                                  funds at once if you deposit more than your daily withdrawal limit.</p>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
-                                  <div class="input-group-prepend">
-                                    <button class="btn btn-primary">COPY</button>
+                        <div class="modal fade" id="depositKCS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-body">
+                              <div class="card modal-content">
+                                <div class="card-body">
+                                  <h5 class="card-title">Wallet Deposit Address</h5>
+                                  <div class="row wallet-address">
+                                    <div class="col-md-8">
+                                      <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                        of your
+                                        funds at once if you deposit more than your daily withdrawal limit.</p>
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                        <div class="input-group-prepend copy">
+                                          <button class="btn btn-primary">COPY</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                <img src="assets/img/qr-code-light.svg" alt="qr-code">
                               </div>
                             </div>
                           </div>
@@ -1100,4 +1147,19 @@ f          </div>
       </div>
     </div>
   </div>
-
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- <script src="assets/js/amcharts-core.min.js"></script> -->
+  <!-- <script src="assets/js/amcharts.min.js"></script> -->
+  <!-- <script src="assets/js/jquery.mCustomScrollbar.js"></script> -->
+  <script src="assets/js/custom.js"></script>
+  <script>
+    $('tbody, .market-news ul').mCustomScrollbar({
+      theme: 'minimal',
+    });
+    $(".copy").click(function(){
+      $(this).siblings("input").select();
+      document.execCommand("copy");
+    });
+  </script>
