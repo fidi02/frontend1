@@ -1910,6 +1910,14 @@ tbody.ob-heading {
     color: #ffffff;
 }
 
+#dark .wallet-address select,
+#dark .wallet-address select:focus {
+    border: 1px solid #2a2e39;
+    background: #2a2e39;
+    box-shadow: none;
+    color: #ffffff;
+}
+
 #dark .depth-chart-inner {
     border: 1px solid #2a2e39;
 }

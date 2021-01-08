@@ -93,7 +93,7 @@ $userDetails = UserData($_SESSION['sname']);
                                       </li>
                                     </ul>
                                     <button type="button" class="btn green" data-toggle="modal" data-target="#deposit'.$data['short'].'">Deposit</button>
-                                    <button class="btn red">Withdraw</button>
+                                    <button type="button" class="btn red" data-toggle="modal" data-target="#withdraw'.$data['short'].'">Withdraw</button>
                                   </div>
                                 </div>
                                 <div class="modal fade" id="deposit'.$data['short'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -187,6 +187,57 @@ $userDetails = UserData($_SESSION['sname']);
                                     });
                                   </script>
                                 </div>
+                                <div class="modal fade" id="withdraw'.$data['short'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-body">
+                                      <div class="card modal-content">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Wallet Deposit Address</h5>
+                                          <div class="row wallet-address">
+                                            <div class="col-md-12">
+                                              <select  class="form-control mb-3">
+                                                <option value="Bank-'.$data['short'].'">Bank Transfer</option>
+                                                <option value="Crypto-'.$data['short'].'">Crypto</option>
+                                                <option value="Paypal-'.$data['short'].'">Paypal</option>
+                                              </select>
+                                              <label for="amount">How much would you like to withdraw?</label>
+                                              <div class="input-group pt-1 mb-3">
+                                                <input type="number" name="amount-'.$data['short'].'" class="form-control">
+                                                <div class="input-group-append" aria-describedby="addon">
+                                                  <span class="input-group-text bg-dark border-0 text-light" id="addon">'.$data['short'].'</span>
+                                                </div>
+                                              </div>
+                                              <label for="wallet">Write your '.$data['short'].' wallet here</label>
+                                              <div class="input-group pt-1 mb-3">
+                                                <input type="text" class="form-control" name="wallet-'.$data['short'].'">
+                                              </div>
+                                              <div class="alert alert-danger" id="danger-'.$data['short'].'" style="display:none;">All fields are required</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div id="buttons" class="d-block mx-auto">
+                                          <button class="btn green" id="complete-'.$data['short'].'" style="display:none;">Complete</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <script>
+                                    $("#complete-'.$data['short'].'").click(function(){
+                                      var coin = "'.$data['id'].'";
+                                      var from = $("input[name='."wallet-".$data['short'].']").val()
+                                      var amount = $("input[name='."amount-".$data['short'].']").val()
+                                      console.log(coin,from,amount);
+                                      $.ajax({
+                                        data: "GET",
+                                        url: "add_transaction.php?coin="+coin+"&from="+from+"&amount="+amount,
+                                        dataType: "html",
+                                        success: function(res){
+                                          location.reload();
+                                        }
+                                      });
+                                    });
+                                  </script>
+                                </div>
                                 <div class="card">
                                   <div class="card-body">
                                     <h5 class="card-title">Latest Transactions</h5>
@@ -215,7 +266,7 @@ $userDetails = UserData($_SESSION['sname']);
                                                 $text = "Declined";
                                               }
                                               echo '<tr>
-                                                <td>'.$transaction['id'].'</td>
+                                                <td>#'.$transaction['id'].'</td>
                                                 <td>'.$transaction['created_at'].'</td>
                                                 <td><i class="icon ion-md-checkmark-circle-outline '.$status.'"></i> '.$text.'</td>
                                                 <td>'.$transaction['amount'].'</td>
