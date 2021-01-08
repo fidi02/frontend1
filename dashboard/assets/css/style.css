@@ -1592,6 +1592,10 @@ tbody.ob-heading {
     color: #ff231f;
 }
 
+#dark .yellow {
+    color: #ffe91f;
+}
+
 #dark .market-pairs .nav {
     background: #1c2030;
 }
