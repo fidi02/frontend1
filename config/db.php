@@ -26,6 +26,26 @@ function UserData($sname)
 
     return $num;
 }
+function UserDataId($id)
+{
+    global $conn;
+
+    $sql = "SELECT * FROM users WHERE id = '$id'";
+    $mysqli = mysqli_query($conn, $sql);
+    $num = mysqli_fetch_assoc($mysqli);
+
+    return $num;
+}
+function CoinData($id)
+{
+    global $conn;
+
+    $sql = "SELECT * FROM coins WHERE id = '$id'";
+    $mysqli = mysqli_query($conn, $sql);
+    $num = mysqli_fetch_assoc($mysqli);
+
+    return $num;
+}
 
 // function ConfigData()
 // {

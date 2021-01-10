@@ -73,6 +73,7 @@ $userDetails = UserData($_SESSION['sname']);
                               $balance = mysqli_query($conn , "SELECT * FROM balance WHERE coin_id =  ".$data['id']." AND user_id = ".$userDetails['id']." ");
                               if(mysqli_num_rows($balance) != 0){
                                 $balance = mysqli_fetch_assoc($balance);
+                                $coin_noextention = $balance['balance'];
                                 $coin_balance = $balance['balance']." ".$data['short'];
                               }else {
                                 $coin_balance = 0.00." ".$data['short'];
@@ -178,10 +179,12 @@ $userDetails = UserData($_SESSION['sname']);
                                       console.log(coin,from,amount);
                                       $.ajax({
                                         data: "GET",
-                                        url: "add_transaction.php?coin="+coin+"&from="+from+"&amount="+amount,
+                                        url: "add_transaction.php?method=deposit&coin="+coin+"&from="+from+"&amount="+amount,
                                         dataType: "html",
                                         success: function(res){
-                                          location.reload();
+                                          if(res == 1){
+                                            location.reload();
+                                          }
                                         }
                                       });
                                     });
@@ -195,46 +198,57 @@ $userDetails = UserData($_SESSION['sname']);
                                           <h5 class="card-title">Wallet Deposit Address</h5>
                                           <div class="row wallet-address">
                                             <div class="col-md-12">
-                                              <select  class="form-control mb-3">
+                                              <select name="payment-method-'.$data['short'].'" class="form-control mb-3">
                                                 <option value="Bank-'.$data['short'].'">Bank Transfer</option>
                                                 <option value="Crypto-'.$data['short'].'">Crypto</option>
                                                 <option value="Paypal-'.$data['short'].'">Paypal</option>
                                               </select>
                                               <label for="amount">How much would you like to withdraw?</label>
                                               <div class="input-group pt-1 mb-3">
-                                                <input type="number" name="amount-'.$data['short'].'" class="form-control">
+                                                <input type="number" name="withdraw-'.$data['short'].'" class="form-control">
                                                 <div class="input-group-append" aria-describedby="addon">
                                                   <span class="input-group-text bg-dark border-0 text-light" id="addon">'.$data['short'].'</span>
                                                 </div>
                                               </div>
                                               <label for="wallet">Write your '.$data['short'].' wallet here</label>
                                               <div class="input-group pt-1 mb-3">
-                                                <input type="text" class="form-control" name="wallet-'.$data['short'].'">
+                                                <input type="text" class="form-control" name="address-'.$data['short'].'">
                                               </div>
-                                              <div class="alert alert-danger" id="danger-'.$data['short'].'" style="display:none;">All fields are required</div>
+                                              <div class="alert alert-danger" id="withdanger-'.$data['short'].'" style="display:none;">All fields are required</div>
+                                              <div class="alert alert-danger" id="nocoin-'.$data['short'].'" style="display:none;">You cant withdraw more than '.$coin_balance.'</div>
                                             </div>
                                           </div>
                                         </div>
                                         <div id="buttons" class="d-block mx-auto">
-                                          <button class="btn green" id="complete-'.$data['short'].'" style="display:none;">Complete</button>
+                                          <button class="btn green" id="withdraw-w-'.$data['short'].'">Complete</button>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                   <script>
-                                    $("#complete-'.$data['short'].'").click(function(){
+                                    $("#withdraw-w-'.$data['short'].'").click(function(){
                                       var coin = "'.$data['id'].'";
-                                      var from = $("input[name='."wallet-".$data['short'].']").val()
-                                      var amount = $("input[name='."amount-".$data['short'].']").val()
-                                      console.log(coin,from,amount);
-                                      $.ajax({
-                                        data: "GET",
-                                        url: "add_transaction.php?coin="+coin+"&from="+from+"&amount="+amount,
-                                        dataType: "html",
-                                        success: function(res){
-                                          location.reload();
+                                      var adress = $("input[name='."address-".$data['short'].']").val();
+                                      var amount = $("input[name='."withdraw-".$data['short'].']").val();
+                                      var method = $("select[name='."payment-method-".$data['short'].']").val();
+                                      if(adress.length != "" && amount.length != ""){
+                                        if(amount > '.$coin_noextention.'){
+                                          $("#nocoin-'.$data['short'].'").show();
+                                        } else {
+                                            $.ajax({
+                                              data: "GET",
+                                              url: "add_transaction.php?method=withdraw&coin="+coin+"&address="+adress+"&amount="+amount+"&pay_method="+method,
+                                              dataType: "html",
+                                              success: function(res){
+                                                if(res == 1){
+                                                  location.reload();
+                                                }
+                                              }
+                                            });
                                         }
-                                      });
+                                      } else {
+                                        $("#withdanger-'.$data['short'].'").show();
+                                      }
                                     });
                                   </script>
                                 </div>
@@ -246,6 +260,7 @@ $userDetails = UserData($_SESSION['sname']);
                                         <thead>
                                           <tr>
                                             <th>No.</th>
+                                            <th>Method</th>
                                             <th>Date</th>
                                             <th>Status</th>
                                             <th>Amount</th>
@@ -267,6 +282,7 @@ $userDetails = UserData($_SESSION['sname']);
                                               }
                                               echo '<tr>
                                                 <td>#'.$transaction['id'].'</td>
+                                                <td>'.ucfirst($transaction['method']).'</td>
                                                 <td>'.$transaction['created_at'].'</td>
                                                 <td><i class="icon ion-md-checkmark-circle-outline '.$status.'"></i> '.$text.'</td>
                                                 <td>'.$transaction['amount'].'</td>
