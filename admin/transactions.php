@@ -70,7 +70,16 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $transactions = mysqli_query($conn, "SELECT * FROM transactions ORDER BY id DESC") or die("mysqli error");
+                                                    $show = 10;
+                                                    $count = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM transactions"));
+                                                    $total = ceil($count / $show);
+                                                    if (isset($_GET['page']) AND !empty($_GET['page']) AND is_numeric($_GET['page'])) {
+                                                        $page = $_GET['page'];
+                                                    } else {
+                                                        $page = 1;
+                                                    }
+                                                    $page = ($page - 1) * $show;
+                                                    $transactions = mysqli_query($conn, "SELECT * FROM transactions ORDER BY id DESC LIMIT ".$page.",".$show."" ) or die("mysqli error");
                                                     if (mysqli_num_rows($transactions) != 0) {
                                                         while($transaction = mysqli_fetch_assoc($transactions)){
                                                             if($transaction['status'] == 0){
@@ -115,18 +124,31 @@
                                         <div>
                                             <nav class="">
                                                 <ul class="pagination">
-                                                    <li class="page-item disabled">
-                                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                                    <?php
+                                                        if(isset($_GET['page'])){
+                                                            $this_page = $_GET['page'];
+                                                            
+                                                        } else {
+                                                            $this_page = 1;
+                                                        }
+                                                        $next = $this_page + 1;
+                                                        $prev = $this_page - 1;
+                                                    ?>
+                                                    <li class="page-item <?php echo ($this_page == 1 ? "disabled":"") ?>">
+                                                        <a class="page-link" href="transactions.php?page=<?php echo ($this_page > 1 ? $prev:"") ?>" tabindex="-1">Previous</a>
                                                     </li>
-                                                    <li class="page-item active"><a class="page-link" href="#">1</a>
-                                                    </li>
-                                                    <li class="page-item ">
-                                                        <a class="page-link" href="#">2 <span
-                                                                    class="sr-only">(current)</span></a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#">Next</a>
+                                                    <?php
+                                                        for ($i=1; $i <= $total; $i++) { 
+                                                            if($this_page == $i){
+                                                                echo '<li class="page-item active"><a class="page-link" href="transactions.php?page='.$i.'">'.$i.'</a></li>';
+                                                            } else {
+                                                                echo '<li class="page-item"><a class="page-link" href="transactions.php?page='.$i.'">'.$i.'</a></li>';
+
+                                                            }
+                                                        }
+                                                    ?>
+                                                    <li class="page-item <?php echo ($this_page == $total ? "disabled":"") ?>">
+                                                        <a class="page-link" href="transactions.php?page=<?php echo ($this_page != $total ? $next:"") ?>">Next</a>
                                                     </li>
                                                 </ul>
                                             </nav>

@@ -267,7 +267,16 @@ $userDetails = UserData($_SESSION['sname']);
                                           </tr>
                                         </thead>
                                         <tbody>';
-                                            $transactions = mysqli_query($conn, "SELECT * FROM transactions WHERE coin_id = ".$data['id']." ORDER BY id DESC") or die("mysqli error");
+                                            $show = 10;
+                                            $count = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM transactions WHERE user_id = ".$userDetails['id']." AND coin_id = ".$data['id'].""));
+                                            $total = ceil($count / $show);
+                                            if (isset($_GET['page']) AND !empty($_GET['page']) AND is_numeric($_GET['page'])) {
+                                                $page = $_GET['page'];
+                                            } else {
+                                                $page = 1;
+                                            }
+                                            $page = ($page - 1) * $show;
+                                            $transactions = mysqli_query($conn, "SELECT * FROM transactions WHERE user_id = ".$userDetails['id']." AND coin_id = ".$data['id']." ORDER BY id DESC LIMIT ".$page.",".$show." ") or die("mysqli error");
                                             if (mysqli_num_rows($transactions) != 0) {
                                             while($transaction = mysqli_fetch_assoc($transactions)){
                                               if($transaction['status'] == 0){
@@ -291,6 +300,36 @@ $userDetails = UserData($_SESSION['sname']);
                                             }
                                         echo'</tbody>
                                       </table>
+                                      <div class="col-auto ml-auto">
+                                        <div>
+                                          <nav class="">
+                                            <ul class="pagination">'; 
+                                                    if(isset($_GET['page'])){
+                                                        $this_page = $_GET['page'];
+                                                        
+                                                    } else {
+                                                        $this_page = 1;
+                                                    }
+                                                    $next = $this_page + 1;
+                                                    $prev = $this_page - 1;
+                                                echo '<li class="page-item border-0 rounded-left '.($this_page == 1 ? "disabled":"").'">
+                                                    <a class="btn btn-dark rounded-left" href="deposit.php?page='.($this_page > 1 ? $prev:"").'" tabindex="-1">Previous</a>
+                                                </li>';
+                                                    for ($i=1; $i <= $total; $i++) { 
+                                                        if($this_page == $i){
+                                                            echo '<li class="page-item border-0 active"><a class="btn btn-dark rounded-0" href="deposit.php?page='.$i.'">'.$i.'</a></li>';
+                                                        } else {
+                                                            echo '<li class="page-item border-0"><a class="btn btn-dark rounded-0" href="deposit.php?page='.$i.'">'.$i.'</a></li>';
+
+                                                        }
+                                                    }
+                                                echo '<li class="page-item border-0 '.($this_page == $total ? "disabled":"").'">
+                                                    <a class="btn btn-dark rounded-right" href="deposit.php?page='.($this_page != $total ? $next:"").'">Next</a>
+                                                </li>
+                                            </ul>
+                                          </nav>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
