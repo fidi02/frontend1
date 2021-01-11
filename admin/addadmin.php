@@ -6,10 +6,8 @@
                     <div class="col-12 text-white p-t-40 p-b-90">
 
                         <h4 class="">
-                               Add User
+                               Add Admin
                         </h4>
-                        
-
 
                     </div>
                 </div>
@@ -46,22 +44,8 @@
                                     <input type="email" class="form-control" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Phone</label>
-                                    <input type="text" class="form-control" name="phone" placeholder="+49 (0) 174-5845-4152">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">EUR</label>
-                                    <input type="text" class="form-control" name="eur" placeholder="0.00">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">BTC</label>
-                                    <input type="text" class="form-control" name="btc" placeholder="0.00">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">ETH</label>
-                                    <input type="text" class="form-control" name="eth" placeholder="0.00">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -76,7 +60,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <button class="btn btn-primary">Submit</button>
+                                <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
                             </form>
                         </div>

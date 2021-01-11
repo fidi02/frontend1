@@ -3,14 +3,11 @@
   include "../config/db.php";
   include '../encrypt.php';
 
-if (isset($_POST['fname'],$_POST['lname'],$_POST['email'],$_POST['phone'],$_POST['eur'],$_POST['btc'],$_POST['eth'],$_POST['password'],$_POST['cpassword'])) {
+if (isset($_POST['fname'],$_POST['lname'],$_POST['email'],$_POST['username'],$_POST['password'],$_POST['cpassword'])) {
     $fname = mysqli_real_escape_string($conn, strip_tags($_POST['fname']));
     $lname = mysqli_real_escape_string($conn, strip_tags($_POST['lname']));
     $email = mysqli_real_escape_string($conn, strip_tags($_POST['email']));
-    $phone = mysqli_real_escape_string($conn, strip_tags($_POST['phone']));
-    $eur = mysqli_real_escape_string($conn, strip_tags($_POST['eur']));
-    $btc = mysqli_real_escape_string($conn, strip_tags($_POST['btc']));
-    $eth = mysqli_real_escape_string($conn, strip_tags($_POST['eth']));
+    $username = mysqli_real_escape_string($conn, strip_tags($_POST['username']));
     $pass1 = mysqli_real_escape_string($conn, strip_tags($_POST['password']));
     $pass2 = mysqli_real_escape_string($conn, strip_tags($_POST['cpassword']));
     
@@ -18,8 +15,8 @@ if (isset($_POST['fname'],$_POST['lname'],$_POST['email'],$_POST['phone'],$_POST
     $rdate = date("y-m-d H:i:s");
     $lvisi = date('y-m-d');
 
-    if (!empty($fname) and !empty($lname) and !empty($email) and !empty($phone)
-    and !empty($eur) and !empty($btc) and !empty($eth) and !empty($pass1) and !empty($pass2)) {
+    if (!empty($fname) and !empty($lname) and !empty($email) and !empty($username)
+    and !empty($pass1) and !empty($pass2)) {
         $passstrlen = strlen($pass1);
 
         $result = mysqli_query($conn, "SELECT * FROM users WHERE email='".$email."'");
@@ -35,9 +32,9 @@ if (isset($_POST['fname'],$_POST['lname'],$_POST['email'],$_POST['phone'],$_POST
         } else {
             $password = dec_enc('encrypt', $pass1);
         
-            $insert = mysqli_query($conn, "INSERT INTO users (emri,mbiemri,email,password,phone,eur,btc,eth)
+            $insert = mysqli_query($conn, "INSERT INTO users (emri,mbiemri,email,password,username,statusi)
             VALUES
-            ('$fname','$lname','$email','$password','$phone','$eur','$btc','$eth')") or die(mysqli_error($conn));
+            ('$fname','$lname','$email','$password','$username','2')") or die(mysqli_error($conn));
         
             header('location:index.php?success=register');
             exit;

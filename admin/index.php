@@ -1,4 +1,9 @@
-<?php include 'header.php';?>
+<?php include 'header.php';
+$str = file_get_contents('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+$json = json_decode($str, true);
+$btc_price = ($json['bpi']['USD']["rate"]);
+
+?>
    
 <section class="admin-content">
         <div class="bg-dark ">
@@ -7,7 +12,7 @@
                     <div class="text-white col-lg-6">
                         <div class="p-all-15">
                             <div class="text-overline m-t-10 opacity-75">
-                                Your Portfolio Balance
+                                BTC price
                             </div>
                             <div class="d-md-flex m-t-20 align-items-center">
                                 <div class="avatar avatar-lg my-auto mr-2">
@@ -16,15 +21,14 @@
                                     </div>
                                 </div>
                                 <h1 class="display-4">
-                                    $54,65,040
+                                    <?=$btc_price ?>
                                 </h1>
-                                <h5 class=" text-danger ml-2"><i class="mdi mdi-arrow-down"></i> 31% Past 24hrs</h5>
                             </div>
                             
                         </div>
                     </div>
                     <div class="col-md-12 p-b-60">
-                        <div id="chart-09" class="chart-canvas invert-colors"></div>
+                        <!-- <div id="chart-09" class="chart-canvas invert-colors"></div> -->
                     </div>
                 </div>
             </div>
@@ -32,39 +36,28 @@
 
         <div class="container-fluid">
             <div class="row d-none  pull-up d-lg-flex">
-                <div class="col m-b-30">
-                    <div class="card ">
+                <?php
+                $query = mysqli_query($conn,"SELECT * FROM coins");
+                while($coin = mysqli_fetch_assoc($query)){
+                    $sum = 0;
+                    $get_price = mysqli_query($conn, "SELECT * FROM balance WHERE coin_id = '".$coin['id']."'");
+                    while($price = mysqli_fetch_assoc($get_price)){
+                        $sum += $price['balance'];
+                    }
+                    echo '<div class="col m-b-30">
+                        <div class="card ">
 
-                        <div class="card-body">
-                            <div class="card-controls">
-                                <a href="#" class="badge badge-soft-success"> <i class="mdi mdi-arrow-down"></i> 12
-                                    %</a>
-                            </div>
-                            <div class="text-center p-t-30 p-b-20">
-                                <div class="text-overline text-muted opacity-75">bitcoin price</div>
-                                <h1 class="text-success">$ 7,560</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col m-b-30">
-                    <div class="card ">
-
-                        <div class="card-body">
-                            <div class="card-controls">
-                                <a href="#" class="badge badge-soft-danger"> <i class="mdi mdi-arrow-down"></i> 10 %</a>
-                            </div>
-                            <div class="text-center p-t-30 p-b-20">
-                                <div class="text-overline text-muted opacity-75">
-                                    lite coin
+                            <div class="card-body">
+                                <div class="text-center p-t-30 p-b-20">
+                                    <div class="text-overline text-muted opacity-75"><img src="../dashboard/assets/img/icon/'.$coin['coin_img'].'" width="30" class="mx-2">'.$coin['name'].'</div>
+                                    <h1 class="text-success">'.$sum.' '.$coin['short'].'</h1>
                                 </div>
-                                <h1 class="text-danger">$ 60,540</h1>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>';
+                }
+                ?>
+                
                 <div class="col visible-xlg   m-b-30">
                     <div class="card ">
 
@@ -90,16 +83,6 @@
                             <h3>Transactions</h3>
 
                         </div>
-                        <div class="col-md-6 text-right p-b-10  my-auto">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-white shadow-none js-datepicker"><i
-                                            class="mdi mdi-calendar"></i> Pick Date
-                                </button>
-                                <button type="button" class="btn btn-white shadow-none">Daily</button>
-                                <button type="button" class="btn btn-primary shadow-none">Monthly</button>
-                                <button type="button" class="btn btn-white shadow-none">Yearly</button>
-                            </div>
-
 
                         </div>
                         <div class="col-md-12">
@@ -113,77 +96,29 @@
                                                 <th scope="col">#User ID</th>
                                                 <th scope="col">Currency</th>
                                                 <th scope="col">Amount</th>
-                                                <th scope="col">EUR</th>
                                                 <th scope="col">Time</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="border-left border-strong border-danger">#65656</td>
-                                                <td class="">#65656</td>
-                                                <td>Bitcoin</td>
-                                                <td>BTC 400.25</td>
-                                                <td>$50,000</td>
-                                                <td>27 June 2018</td>
-                                            </tr>
+                                            <?php
+                                            $query = mysqli_query($conn,"SELECT * FROM  transactions WHERE status != 0 ORDER BY id DESC LIMIT 10");
+                                            while($transaction = mysqli_fetch_assoc($query)){
+                                                $coin_q = mysqli_query($conn,"SELECT * FROM coins WHERE id = '".$transaction['coin_id']."'");
+                                                $coin = mysqli_fetch_assoc($coin_q);
+                                                echo '<tr>
+                                                    <td class="border-left border-strong border-'.($transaction['method'] == "deposit" ? "success":"danger").'">#'.$transaction['id'].'</td>
+                                                    <td class="">#'.$transaction['user_id'].'</td>
+                                                    <td>'.$coin['name'].'</td>
+                                                    <td>'.$coin['short'].' '.$transaction['amount'].'</td>
+                                                    <td>'.$transaction['created_at'].'</td>
+                                                </tr>';
+                                            }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="card m-b-30">
-                        <div class="card-body ">
-                            <div class="p-t-15 p-b-15  border-bottom border-bottom-dashed">
-                                <div class="row ">
-                                    <div class="col-md-7">
-                                        <h6 class="">Bitcoin
-                                        </h6>
-                                        <p class="text-muted m-0 ">
-                                            Awerage Weekly Profit
-
-                                        </p>
-                                    </div>
-                                    <div class="col-md-5 my-auto  text-right">
-                                        <h4 class="text-primary m-0">$5900</h4>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="p-t-15 p-b-15  border-bottom border-bottom-dashed">
-                                <div class="row ">
-                                    <div class="col-md-7">
-                                        <h6 class="">Bitcoin Vs USD</h6>
-                                        <p class="text-muted m-0 ">
-                                            Growth Past Quarter
-                                        </p>
-                                    </div>
-                                    <div class="col-md-5 my-auto  text-right">
-                                        <h4 class="text-success m-0">$6400</h4>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="p-t-15 p-b-15  ">
-                                <div class="row ">
-                                    <div class="col-md-7">
-                                        <h6 class="">Overall Transactions</h6>
-                                        <p class="text-muted m-0 ">
-                                            Market Liquidity
-                                        </p>
-                                    </div>
-                                    <div class="col-md-5 my-auto  text-right">
-                                        <h4 class="text-danger m-0">-15%</h4>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-
                         </div>
                     </div>
                 </div>

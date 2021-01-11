@@ -1,4 +1,11 @@
-<?php include 'header.php';?>
+<?php include 'header.php';
+if(!isset($_GET['id']) || empty($_GET['id'])){
+    header("Location: users.php");
+} else{
+    $user = UserDataId($_GET['id']);
+}
+?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <section class="admin-content">
         <div class="bg-dark">
             <div class="container  m-b-30">
@@ -6,7 +13,7 @@
                     <div class="col-12 text-white p-t-40 p-b-90">
 
                         <h4 class="">
-                               Users List
+                            Balance for <?php echo $user['emri']." ".$user['mbiemri'] ?>
                         </h4>
                     </div>
                 </div>
@@ -19,40 +26,83 @@
                     <div class="card">
 
                         <div class="card-body">
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-outline-danger mx-1" onclick="location.reload()">Reset</button>
+                                <button class="btn btn-outline-success mx-1" id="save">Save</button>
+                            </div>
                             <div class="table-responsive p-t-10">
+                                    
                                 <table id="example-multi" class="table   " style="width:100%">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last  Name</th>
-                                        <th>Email</th>
-                                        <th class="text-center"></th>
+                                        <th>Coin</th>
+                                        <th>Amount</th>
+                                        <th>New balance</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php 
-                                    $query = mysqli_query($conn,"SELECT * FROM users where statusi = 1");
-                                    while($row = mysqli_fetch_assoc($query)){
-                                        $id = $row['id'];
-                                        $fname = $row['emri'];
-                                        $lname = $row['mbiemri'];
-                                        $email = $row['email'];
+                                    $query = mysqli_query($conn,"SELECT * FROM coins");
+                                    while($coin = mysqli_fetch_assoc($query)){
+                                        $get_balance = mysqli_query($conn, "SELECT * FROM balance WHERE user_id = '".$user['id']."' AND coin_id = '".$coin['id']."' LIMIT 1");
+                                        if(mysqli_num_rows($get_balance)){
+                                            $balance = mysqli_fetch_assoc($get_balance);
+                                            $balance = $balance['balance']." ".$coin['short'];
+                                        } else {
+                                            $balance = 0.00." ".$coin['short'];
+                                        }
                                         echo '
                                         <tr>
-                                        <td>'.$id.'</td>
-                                        <td>'.$fname.'</td>
-                                        <td>'.$lname.'</td>
-                                        <td>'.$email.'</td>
-                                        <td class="text-center">
-                                            <a href="edit.php?id='.$id.'" class="btn  btn-primary"> Edit</a>
-                                            <a href="balance.php?id='.$id.'" class="btn  btn-danger"> Edit Balance</a>
+                                        <td>
+                                            <img src="../dashboard/assets/img/icon/'.$coin['coin_img'].'" width="30">
+                                            '.$coin['name'].' ('.$coin['short'].')
                                         </td>
-                                    </tr>
-                                        ';
+                                        <td>'.$balance.'</td>
+                                        <td class="text-center">
+                                            <div class="input-group mb-3">
+                                                <input type="number" value="'.explode(" ", $balance)[0].'" id="amount-'.$coin['short'].'" class="form-control" aria-describedby="addon-'.$coin['short'].'">
+                                                <div class="input-group-append">
+                                                <span class="input-group-text" id="addon-'.$coin['short'].'">'.$coin['short'].'</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>';
                                     }
                                     
-                                    
+                                    echo "<script>
+                                    $('#save').click(function(){";
+                                    $query = mysqli_query($conn,"SELECT * FROM coins");
+                                    while($coin = mysqli_fetch_assoc($query)){
+                                        echo "var ".$coin['short']." = $('#amount-".$coin['short']."').val();".PHP_EOL;
+                                    }
+                                    echo "var url = 'editBalance.php?user_id=".$user['id'];
+                                    $query = mysqli_query($conn,"SELECT * FROM coins");
+                                    $coins_num = mysqli_num_rows($query);
+                                    $i = 1;
+                                    while($coin = mysqli_fetch_assoc($query)){
+                                        if($i == $coins_num){
+                                            echo "&".$coin['short']."='+".$coin['short'];
+                                        } else {
+                                            echo "&".$coin['short']."='+".$coin['short']."+'";
+                                        }
+                                        $i++;
+                                    }
+                                    echo "
+
+                                    $.ajax({
+                                        data: 'GET',
+                                        url: url,
+                                        dataType: 'html',
+                                        success:function(res){
+                                            if(res == 0){
+                                                location.href = 'users.php';
+                                            } else {
+                                                location.href = 'users.php';
+                                            }
+                                        }
+                                    });
+                                
+                                    });</script>";
                                     ?>
                                     
                                     </tfoot>

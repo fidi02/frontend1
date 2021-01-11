@@ -1,3 +1,17 @@
+<?php
+include '../config/db.php';
+if (isset($_SESSION['sname'],$_SESSION['type'])) {
+    if ($_SESSION['type'] == 'biznes') {
+        header('location:../dashboard/index.php');
+        exit;
+    } elseif ($_SESSION['type'] == 'admin') {
+        // vazhdo
+    } 
+} else {
+    header('location: ../logout.php');
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +74,7 @@
     <div class="admin-sidebar-wrapper js-scrollbar">
         <ul class="menu">
             <li class="menu-item active ">
-                <a href="#" class="open-dropdown menu-link">
+                <a href="index.php" class="open-dropdown menu-link">
                         <span class="menu-label">
                                                 <span class="menu-name">Dashboard
                                                     <span class=""></span>
@@ -102,7 +116,7 @@ A
 
                     </li>
                     <li class="menu-item">
-                        <a href='users.php' class=' menu-link'>
+                        <a href='admin_list.php' class=' menu-link'>
                                             <span class="menu-label">
                                                 <span class="menu-name">Admin List </span>
                                             </span>
@@ -115,7 +129,7 @@ A
 
                     </li>
                     <li class="menu-item">
-                        <a href='adduser.php' class=' menu-link'>
+                        <a href='addadmin.php' class=' menu-link'>
                                             <span class="menu-label">
                                                 <span class="menu-name">Add Admin </span>
                                             </span>

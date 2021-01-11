@@ -6,7 +6,7 @@
                     <div class="col-12 text-white p-t-40 p-b-90">
 
                         <h4 class="">
-                               Users List
+                               Admin list
                         </h4>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                                     </thead>
                                     <tbody>
                                     <?php 
-                                    $query = mysqli_query($conn,"SELECT * FROM users where statusi = 1");
+                                    $query = mysqli_query($conn,"SELECT * FROM users where statusi = 2");
                                     while($row = mysqli_fetch_assoc($query)){
                                         $id = $row['id'];
                                         $fname = $row['emri'];
