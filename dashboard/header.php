@@ -145,7 +145,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="exchange-dark.html" class="nav-link red">
+                    <a href="logout.php" class="nav-link red">
                       <i class="icon ion-md-power"></i>
                       <span>Log Out</span>
                     </a>

@@ -24,6 +24,23 @@ $userDetails = UserData($_SESSION['sname']);
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
             async>
               {
+                "symbol": "NYSE:PFE",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
                 "symbol": "NASDAQ:NFLX",
                   "width": "100%",
                     "locale": "en",
@@ -230,6 +247,108 @@ $userDetails = UserData($_SESSION['sname']);
             async>
               {
                 "symbol": "NYSE:CCL",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:TSE",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:BRK.A",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:MA",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:DIS",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:BAC",
+                  "width": "100%",
+                    "locale": "en",
+                      "colorTheme": "dark",
+                        "isTransparent": false
+              }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div class="col-md-12">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async>
+              {
+                "symbol": "NYSE:HD",
                   "width": "100%",
                     "locale": "en",
                       "colorTheme": "dark",

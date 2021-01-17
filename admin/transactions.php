@@ -1,4 +1,3 @@
-<?php include '../config/db.php';?>
 <?php include 'header.php';?>
 <section class="admin-content ">
         <div class="bg-dark m-b-30">
@@ -69,6 +68,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                
                                                     <?php
                                                     $show = 10;
                                                     $count = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM transactions"));
