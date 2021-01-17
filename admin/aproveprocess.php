@@ -1,7 +1,6 @@
 <?php
 
 include "../config/db.php";
-
 if (isset($_SESSION['sname'],$_SESSION['type'])) {
     if ($_SESSION['type'] == 'biznes') {
         // vazhdo
