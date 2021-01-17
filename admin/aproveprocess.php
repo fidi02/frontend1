@@ -1,10 +1,11 @@
 <?php
 
 include "../config/db.php";
+
 if (isset($_SESSION['sname'],$_SESSION['type'])) {
-    if ($_SESSION['type'] == 'biznes') {
+    if ($_SESSION['type'] == 'admin') {
         // vazhdo
-    } elseif ($_SESSION['type'] == 'admin') {
+    } elseif ($_SESSION['type'] == 'biznesi') {
         header('location:../admin/index.php');
         exit;
     } 
