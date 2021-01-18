@@ -44,7 +44,7 @@
                                     </a>
                                     <!-- module logo begin -->
                                     <p class="uk-text-lead uk-margin-top uk-margin-remove-bottom">Log into your account</p>
-                                    <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Don't have an account? <a href="#">Register here</a></p>
+                                    <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Don't have an account? <a href="register.php">Register here</a></p>
                                     <!-- login form begin -->
                                     <form class="uk-grid uk-form">
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
