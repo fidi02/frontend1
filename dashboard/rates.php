@@ -15,14 +15,14 @@ $userDetails = UserData($_SESSION['sname']);
 
 ?>
 <?php include 'header.php';?>
-  <div class="container-fluid mtb15">
+<div class="container-fluid mtb15">
     <div class="row">
       <div class="col-md-12">
         <!-- TradingView Widget BEGIN -->
         <div class="tradingview-widget-container">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+            src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
               {
                 "width": "100%",
                   "height": 900,
@@ -35,12 +35,9 @@ $userDetails = UserData($_SESSION['sname']);
                       "AUD",
                       "CAD",
                       "NZD",
-                      "CNY",
-                      "TRY",
                       "SEK",
                       "NOK",
                       "DKK",
-                      "ZAR",
                       "HKD"
                     ],
                       "isTransparent": false,

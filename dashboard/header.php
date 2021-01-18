@@ -36,7 +36,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link" href="rates.php" role="button"  aria-haspopup="true"
               aria-expanded="false">
-              Cross Rates
+              Arbitrage
             </a>
           </li>
         </ul>
