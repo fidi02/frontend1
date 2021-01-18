@@ -25,19 +25,19 @@
           <li class="nav-item dropdown">
             <a class="nav-link" href="index.php" role="button" aria-haspopup="true"
               aria-expanded="false">
-              Dashboard
+              <?= lang("Dashboard")?>
             </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" href="stock.php" role="button"  aria-haspopup="true"
               aria-expanded="false">
-              Stock
+              <?= lang("Stock")?>
             </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" href="rates.php" role="button"  aria-haspopup="true"
               aria-expanded="false">
-              Arbitrage
+              <?= lang("Stock")?>
             </a>
           </li>
         </ul>
@@ -50,63 +50,27 @@
           <li class="nav-item dropdown header-custom-icon">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
-              <i class="icon ion-md-notifications"></i>
-              <span class="circle-pulse"></span>
+              <img src="assets/img/<?= $_SESSION['lang']?>.png" width="20"alt="">
+              <!-- <span class="circle-pulse"></span> -->
             </a>
             <div class="dropdown-menu">
-              <div class="dropdown-header d-flex align-items-center justify-content-between">
-                <p class="mb-0 font-weight-medium">6 New Notifications</p>
-                <a href="#!" class="text-muted">Clear all</a>
-              </div>
               <div class="dropdown-body">
-                <a href="#!" class="dropdown-item">
+                <a href="?lang=en" class="dropdown-item">
                   <div class="icon">
-                    <i class="icon ion-md-lock"></i>
+                    <img src="assets/img/en.png">
                   </div>
                   <div class="content">
-                    <p>Account password change</p>
-                    <p class="sub-text text-muted">5 sec ago</p>
+                    <p>English</p>
                   </div>
                 </a>
-                <a href="#!" class="dropdown-item">
+                <a href="?lang=de" class="dropdown-item">
                   <div class="icon">
-                    <i class="icon ion-md-alert"></i>
+                    <img src="assets/img/de.png">
                   </div>
                   <div class="content">
-                    <p>Solve the security issue</p>
-                    <p class="sub-text text-muted">10 min ago</p>
+                    <p>German</p>
                   </div>
                 </a>
-                <a href="#!" class="dropdown-item">
-                  <div class="icon">
-                    <i class="icon ion-logo-android"></i>
-                  </div>
-                  <div class="content">
-                    <p>Download android app</p>
-                    <p class="sub-text text-muted">1 hrs ago</p>
-                  </div>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <div class="icon">
-                    <i class="icon ion-logo-bitcoin"></i>
-                  </div>
-                  <div class="content">
-                    <p>Bitcoin price is high now</p>
-                    <p class="sub-text text-muted">2 hrs ago</p>
-                  </div>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <div class="icon">
-                    <i class="icon ion-logo-usd"></i>
-                  </div>
-                  <div class="content">
-                    <p>Payment completed</p>
-                    <p class="sub-text text-muted">4 hrs ago</p>
-                  </div>
-                </a>
-              </div>
-              <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                <a href="#!">View all</a>
               </div>
             </div>
           </li>
@@ -130,25 +94,25 @@
                   <li class="nav-item">
                     <a href="profile.php" class="nav-link">
                       <i class="icon ion-md-person"></i>
-                      <span>Profile</span>
+                      <span><?= lang("Profile")?></span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="deposit.php" class="nav-link">
                       <i class="icon ion-md-wallet"></i>
-                      <span>My Wallet</span>
+                      <span><?= lang("My Wallet")?></span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="settings.php" class="nav-link">
                       <i class="icon ion-md-settings"></i>
-                      <span>Settings</span>
+                      <span><?= lang("Settings")?></span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="logout.php" class="nav-link red">
                       <i class="icon ion-md-power"></i>
-                      <span>Log Out</span>
+                      <span><?= lang("Log Out")?></span>
                     </a>
                   </li>
                 </ul>
