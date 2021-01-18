@@ -22,7 +22,7 @@ $userDetails = UserData($_SESSION['sname']);
           <div class="nav flex-column nav-pills settings-nav" id="v-pills-tab" role="tablist"
             aria-orientation="vertical">
             <a class="nav-link active" id="settings-wallet-tab" data-toggle="pill" href="#settings-wallet" role="tab"
-              aria-controls="settings-wallet" aria-selected="false"><i class="icon ion-md-wallet"></i> Wallet</a>
+              aria-controls="settings-wallet" aria-selected="false"><i class="icon ion-md-wallet"></i> <?= lang("Wallet")?></a>
           </div>
         </div>
         <div class="col-md-12 col-lg-9">
@@ -76,25 +76,26 @@ $userDetails = UserData($_SESSION['sname']);
                                 $coin_noextention = $balance['balance'];
                                 $coin_balance = $balance['balance']." ".$data['short'];
                               }else {
+                                $coin_noextention = 0;
                                 $coin_balance = 0.00." ".$data['short'];
                               }
                               echo '<div class="tab-pane fade '.($data['short']=="BTC"?"active show":"").'" id="coin'.$data['short'].'" role="tabpanel">
                                 <div class="card modal-content">
                                   <div class="card-body">
-                                    <h5 class="card-title">Balances</h5>
+                                    <h5 class="card-title">'.lang("Balances").'</h5>
                                     <ul>
                                       <li class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center">
                                           <i class="icon ion-md-cash"></i>
-                                          <h2>Total Equity</h2>
+                                          <h2>'.lang("Total Equity").'</h2>
                                         </div>
                                         <div>
                                           <h3>'.$coin_balance.'</h3>
                                         </div>
                                       </li>
                                     </ul>
-                                    <button type="button" class="btn green" data-toggle="modal" data-target="#deposit'.$data['short'].'">Deposit</button>
-                                    <button type="button" class="btn red" data-toggle="modal" data-target="#withdraw'.$data['short'].'">Withdraw</button>
+                                    <button type="button" class="btn green" data-toggle="modal" data-target="#deposit'.$data['short'].'">'.lang("Deposit").'</button>
+                                    <button type="button" class="btn red" data-toggle="modal" data-target="#withdraw'.$data['short'].'">'.lang("Withdraw").'</button>
                                   </div>
                                 </div>
                                 <div class="modal fade" id="deposit'.$data['short'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,28 +104,28 @@ $userDetails = UserData($_SESSION['sname']);
                                       <div class="card modal-content">
                                         <div class="tab-'.$data['short'].'">
                                           <div class="card-body">
-                                          <h5 class="card-title">Wallet Deposit Address</h5>
+                                          <h5 class="card-title">'.lang("Wallet Deposit Address").'</h5>
                                           <div class="row wallet-address">
                                             <div class="col-md-12">
-                                              <label for="amount">How much would you like to deposit? ('.$data['short'].')</label>
+                                              <label for="amount">'.lang("How much would you like to deposit?").' ('.$data['short'].')</label>
                                               <div class="input-group pt-1 mb-3">
                                                 <input type="number" name="amount-'.$data['short'].'" class="form-control">
                                                 <div class="input-group-append" aria-describedby="addon">
                                                   <span class="input-group-text bg-dark border-0 text-light" id="addon">'.$data['short'].'</span>
                                                 </div>
                                               </div>
-                                              <label for="wallet">Write your '.$data['short'].' wallet here</label>
+                                              <label for="wallet">'.lang("Write your ").$data['short'].lang(" wallet here").'</label>
                                               <div class="input-group pt-1 mb-3">
                                                 <input type="text" class="form-control" name="wallet-'.$data['short'].'">
                                               </div>
-                                              <div class="alert alert-danger" id="danger-'.$data['short'].'" style="display:none;">All fields are required</div>
+                                              <div class="alert alert-danger" id="danger-'.$data['short'].'" style="display:none;">'.lang("All fields are required").'</div>
                                             </div>
                                           </div>
                                         </div>
                                         </div>
                                         <div class="tab-'.$data['short'].'" style="display:none;">
                                           <div class="card-body">
-                                            <h5 class="card-title">Wallet Deposit Address</h5>
+                                            <h5 class="card-title">'.lang("Wallet Deposit Address").'</h5>
                                             <div class="row wallet-address">
                                               <div class="col-md-8">
                                                 <p>Send only <span id="coin-'.$data['short'].'"></span> '.$data['short'].' to the address below. Then click complete</p>
@@ -142,9 +143,9 @@ $userDetails = UserData($_SESSION['sname']);
                                           </div>
                                         </div>
                                         <div id="buttons" class="d-block mx-auto">
-                                          <button class="btn red" id="back-'.$data['short'].'" style="display:none;" >Back</button>
-                                          <button class="btn green" id="next-'.$data['short'].'" >Next</button>
-                                          <button class="btn green" id="complete-'.$data['short'].'" style="display:none;">Complete</button>
+                                          <button class="btn red" id="back-'.$data['short'].'" style="display:none;" >'.lang("Back").'</button>
+                                          <button class="btn green" id="next-'.$data['short'].'" >'.lang("Next").'</button>
+                                          <button class="btn green" id="complete-'.$data['short'].'" style="display:none;">'.lang("Complete").'</button>
                                         </div>
                                       </div>
                                     </div>
@@ -195,32 +196,32 @@ $userDetails = UserData($_SESSION['sname']);
                                     <div class="modal-body">
                                       <div class="card modal-content">
                                         <div class="card-body">
-                                          <h5 class="card-title">Wallet Deposit Address</h5>
+                                          <h5 class="card-title">'.lang("Wallet Withdraw Address").'</h5>
                                           <div class="row wallet-address">
                                             <div class="col-md-12">
                                               <select name="payment-method-'.$data['short'].'" class="form-control mb-3">
-                                                <option value="Bank-'.$data['short'].'">Bank Transfer</option>
-                                                <option value="Crypto-'.$data['short'].'">Crypto</option>
-                                                <option value="Paypal-'.$data['short'].'">Paypal</option>
+                                                <option value="Bank-'.$data['short'].'">'.lang("Bank Transfer").'</option>
+                                                <option value="Crypto-'.$data['short'].'">'.lang("Crypto").'</option>
+                                                <option value="Paypal-'.$data['short'].'">'.lang("Paypal").'</option>
                                               </select>
-                                              <label for="amount">How much would you like to withdraw?</label>
+                                              <label for="amount">'.lang("How much would you like to withdraw?").'</label>
                                               <div class="input-group pt-1 mb-3">
                                                 <input type="number" name="withdraw-'.$data['short'].'" class="form-control">
                                                 <div class="input-group-append" aria-describedby="addon">
                                                   <span class="input-group-text bg-dark border-0 text-light" id="addon">'.$data['short'].'</span>
                                                 </div>
                                               </div>
-                                              <label for="wallet">Write your '.$data['short'].' wallet here</label>
+                                              <label for="wallet">'.lang("Write your ").$data['short'].lang(" wallet here").'</label>
                                               <div class="input-group pt-1 mb-3">
                                                 <input type="text" class="form-control" name="address-'.$data['short'].'">
                                               </div>
-                                              <div class="alert alert-danger" id="withdanger-'.$data['short'].'" style="display:none;">All fields are required</div>
-                                              <div class="alert alert-danger" id="nocoin-'.$data['short'].'" style="display:none;">You cant withdraw more than '.$coin_balance.'</div>
+                                              <div class="alert alert-danger" id="withdanger-'.$data['short'].'" style="display:none;">'.lang("All fields are required").'</div>
+                                              <div class="alert alert-danger" id="nocoin-'.$data['short'].'" style="display:none;">'.lang("You can't withdraw more than ").$coin_balance.'</div>
                                             </div>
                                           </div>
                                         </div>
                                         <div id="buttons" class="d-block mx-auto">
-                                          <button class="btn green" id="withdraw-w-'.$data['short'].'">Complete</button>
+                                          <button class="btn green" id="withdraw-w-'.$data['short'].'">'.lang("Complete").'</button>
                                         </div>
                                       </div>
                                     </div>
@@ -254,16 +255,16 @@ $userDetails = UserData($_SESSION['sname']);
                                 </div>
                                 <div class="card">
                                   <div class="card-body">
-                                    <h5 class="card-title">Latest Transactions</h5>
+                                    <h5 class="card-title">'.lang("Latest Transactions").'</h5>
                                     <div class="wallet-history">
                                       <table class="table">
                                         <thead>
                                           <tr>
                                             <th>No.</th>
-                                            <th>Method</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Amount</th>
+                                            <th>'.lang("Method").'</th>
+                                            <th>'.lang("Date").'</th>
+                                            <th>'.lang("Status").'</th>
+                                            <th>'.lang("Amount").'</th>
                                           </tr>
                                         </thead>
                                         <tbody>';
@@ -278,25 +279,27 @@ $userDetails = UserData($_SESSION['sname']);
                                             $page = ($page - 1) * $show;
                                             $transactions = mysqli_query($conn, "SELECT * FROM transactions WHERE user_id = ".$userDetails['id']." AND coin_id = ".$data['id']." ORDER BY id DESC LIMIT ".$page.",".$show." ") or die("mysqli error");
                                             if (mysqli_num_rows($transactions) != 0) {
-                                            while($transaction = mysqli_fetch_assoc($transactions)){
-                                              if($transaction['status'] == 0){
-                                                $status = "yellow";
-                                                $text = "Pending";
-                                              } elseif($transaction['status'] == 1) {
-                                                $status = "green";
-                                                $text = "Approved";
-                                              }else {
-                                                $status = "red";
-                                                $text = "Declined";
+                                              while($transaction = mysqli_fetch_assoc($transactions)){
+                                                if($transaction['status'] == 0){
+                                                  $status = "yellow";
+                                                  $text = lang("Pending");
+                                                } elseif($transaction['status'] == 1) {
+                                                  $status = "green";
+                                                  $text = lang("Approved");
+                                                }else {
+                                                  $status = "red";
+                                                  $text = lang("Declined");
+                                                }
+                                                echo '<tr>
+                                                  <td>#'.$transaction['id'].'</td>
+                                                  <td>'.ucfirst($transaction['method']).'</td>
+                                                  <td>'.$transaction['created_at'].'</td>
+                                                  <td><i class="icon ion-md-checkmark-circle-outline '.$status.'"></i> '.$text.'</td>
+                                                  <td>'.$transaction['amount'].'</td>
+                                                </tr>';
                                               }
-                                              echo '<tr>
-                                                <td>#'.$transaction['id'].'</td>
-                                                <td>'.ucfirst($transaction['method']).'</td>
-                                                <td>'.$transaction['created_at'].'</td>
-                                                <td><i class="icon ion-md-checkmark-circle-outline '.$status.'"></i> '.$text.'</td>
-                                                <td>'.$transaction['amount'].'</td>
-                                              </tr>';
-                                              }
+                                            } else {
+                                              echo '<tr><td colspan="5" class="text-center">'.lang("There are no transactions").'</td></tr>';
                                             }
                                         echo'</tbody>
                                       </table>
@@ -313,7 +316,7 @@ $userDetails = UserData($_SESSION['sname']);
                                                     $next = $this_page + 1;
                                                     $prev = $this_page - 1;
                                                 echo '<li class="page-item border-0 rounded-left '.($this_page == 1 ? "disabled":"").'">
-                                                    <a class="btn btn-dark rounded-left" href="deposit.php?page='.($this_page > 1 ? $prev:"").'" tabindex="-1">Previous</a>
+                                                    <a class="btn btn-dark rounded-left" href="deposit.php?page='.($this_page > 1 ? $prev:"").'" tabindex="-1">'.lang("Previous").'</a>
                                                 </li>';
                                                     for ($i=1; $i <= $total; $i++) { 
                                                         if($this_page == $i){
@@ -324,7 +327,7 @@ $userDetails = UserData($_SESSION['sname']);
                                                         }
                                                     }
                                                 echo '<li class="page-item border-0 '.($this_page == $total ? "disabled":"").'">
-                                                    <a class="btn btn-dark rounded-right" href="deposit.php?page='.($this_page != $total ? $next:"").'">Next</a>
+                                                    <a class="btn btn-dark rounded-right" href="deposit.php?page='.($this_page != $total ? $next:"").'">'.lang("Next").'</a>
                                                 </li>
                                             </ul>
                                           </nav>
